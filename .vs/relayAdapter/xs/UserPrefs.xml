@@ -1,0 +1,31 @@
+﻿<Properties StartupConfiguration="{EE11226D-6D0B-4C4D-B390-7B95112FB72D}|Default">
+  <MonoDevelop.Ide.ItemProperties.relayAdapter PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Dtos/Createpaymentdto.cs">
+    <Files>
+      <File FileName="Dtos/Createpaymentdto.cs" Line="2" Column="1" />
+      <File FileName="Controllers/CreatepaymentController.cs" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="relayAdapter" expanded="True">
+            <Node name="relayAdapter" expanded="True">
+              <Node name="Dependencies" expanded="True" />
+              <Node name="Controllers" expanded="True" />
+              <Node name="Dtos" expanded="True">
+                <Node name="Createpaymentdto.cs" selected="True" />
+              </Node>
+              <Node name="ServiceReference" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
