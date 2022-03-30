@@ -1,6 +1,8 @@
 using System;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
+using System.Threading.Tasks;
+using System.Diagnostics;
 // using
 
 
@@ -12,12 +14,33 @@ namespace relayAdapter.Controllers
     {
 
         [HttpPost]
-        public ActionResult<string> findcustomerbyid(Dtos.Findcustomerbyiddto findcustomerbyiddto)
+        public async Task<ServiceReference.HFMP_AX_ECollectionFindCustomerByIdResponse> findcustomerbyid(Dtos.Findcustomerbyiddto findcustomerbyiddto)
         {
+            ServiceReference.CallContext callcontext = new ServiceReference.CallContext();
+            callcontext.Company = "";
+            callcontext.Language = "";
+            callcontext.LogonAsUser = "";
+            callcontext.MessageId = "";
+            callcontext.PartitionKey = "";
+            // callcontext.PropertyBag.Keys
+ 
             // return  Jnew [] { "Matthew", "Mark", "Luke", "John" };
             // return new JsonResult();
            // JsonSerializer();
-            return "";
+           ServiceReference.HFMP_AX_ECollectionClient client = new ServiceReference.HFMP_AX_ECollectionClient();
+        //    try
+        //    {
+               var  response  = await client.findCustomerByIdAsync(callcontext, findcustomerbyiddto._custAccount);
+               return response;
+            //    if(response.)
+           
+        //    }
+        //    catch (System.Exception ee)
+        //    {
+               
+        //        //throw Debug.WriteLine("WElo");
+        //    }
+           // return "";
 
         }
 

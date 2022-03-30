@@ -19,7 +19,7 @@ namespace relayAdapter.Dtos
         [Range(1, 1000000000000)]
         public decimal _amount { get; init; }
 
-        public DateTimeOffset _date { get; init; }
+        public DateTime _date { get; init; }
 
 
     }
