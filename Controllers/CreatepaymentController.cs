@@ -9,54 +9,66 @@ using System.Net;
 
 using System.Threading.Tasks;
 
-
 namespace relayAdapter.Controller
 {
-
     [ApiController]
-     [Route("[controller]")]
+    [Route("[controller]")]
     public class CreatepaymentController : ControllerBase
     {
-
         // [HttpPost]
         // public IEnumerable<Payment> Post()
         // {
 
         // }
 
-        public CreatepaymentController()
-        {
+        public CreatepaymentController() { }
 
-        }
         [HttpPost]
-        public async Task<ServiceReference.HFMP_AX_ECollectionCreateAndPostPaymentResponse> Postpayment(Dtos.Createpaymentdto createpaymentdto)
+        public async Task<string> Postpayment(
+            Dtos.Createpaymentdto createpaymentdto
+        )
         {
             // return NotFound();
             ServiceReference.CallContext callcontext = new ServiceReference.CallContext();
-             callcontext.Company = "hfmp";
+            callcontext.Company = "hfmp";
             callcontext.Language = "";
             callcontext.LogonAsUser = "BankCollect2";
             callcontext.MessageId = "";
             callcontext.PartitionKey = "";
-            
 
-            ServiceReference.HFMP_AX_ECollectionClient client = new ServiceReference.HFMP_AX_ECollectionClient();
+            ServiceReference.HFMP_AX_ECollectionClient client =
+                new ServiceReference.HFMP_AX_ECollectionClient();
             // client.Client
             client.ClientCredentials.Windows.ClientCredential.UserName = "BankCollect2";
-           client.ClientCredentials.Windows.ClientCredential.Password = "Password@123";
-            if (client.InnerChannel.State != System.ServiceModel.CommunicationState.Faulted){
-               return await client.createAndPostPaymentAsync(callcontext, createpaymentdto._custAccount, createpaymentdto._currencyCode, createpaymentdto._bankAccountId, createpaymentdto._amount, createpaymentdto._date);
-           
-            }else{
-  return await client.createAndPostPaymentAsync(callcontext, createpaymentdto._custAccount, createpaymentdto._currencyCode, createpaymentdto._bankAccountId, createpaymentdto._amount, createpaymentdto._date);
-            
+            client.ClientCredentials.Windows.ClientCredential.Password = "Password@123";
+            if (client.InnerChannel.State != System.ServiceModel.CommunicationState.Faulted)
+            {
+                var res = await client.createAndPostPaymentAsync(
+                    callcontext,
+                    createpaymentdto._custAccount,
+                    createpaymentdto._currencyCode,
+                    createpaymentdto._bankAccountId,
+                    createpaymentdto._amount,
+                    createpaymentdto._date
+                );
+                return res.response;
             }
-          // return "";
+            else
+            {
+                var res = await client.createAndPostPaymentAsync(
+                    callcontext,
+                    createpaymentdto._custAccount,
+                    createpaymentdto._currencyCode,
+                    createpaymentdto._bankAccountId,
+                    createpaymentdto._amount,
+                    createpaymentdto._date
+                );
+                return res.response;
+            }
+            // return "";
             //Call Soap Reference Service here and return json packets
             // return createpaymentdto;
 
         }
-
     }
-
 }
