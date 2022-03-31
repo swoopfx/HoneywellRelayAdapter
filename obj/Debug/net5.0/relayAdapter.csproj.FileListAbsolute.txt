@@ -70,3 +70,4 @@ C:\inetpub\relayAdapter\obj\Debug\net5.0\relayAdapter.RazorTargetAssemblyInfo.ca
 C:\inetpub\relayAdapter\obj\Debug\net5.0\relayAdapter.csproj.CopyComplete
 C:\inetpub\relayAdapter\obj\Debug\net5.0\relayAdapter.genruntimeconfig.cache
 C:\inetpub\relayAdapter\obj\Debug\net5.0\refint\relayAdapter.dll
+C:\inetpub\relayAdapter\bin\Debug\net5.0\Newtonsoft.Json.dll
