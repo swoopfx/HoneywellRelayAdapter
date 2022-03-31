@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using Newtonsoft.Json;
 // using
 
 
@@ -14,12 +15,12 @@ namespace relayAdapter.Controllers
     {
 
         [HttpPost]
-        public async Task<ServiceReference.HFMP_AX_ECollectionFindCustomerByIdResponse> findcustomerbyid(Dtos.Findcustomerbyiddto findcustomerbyiddto)
+        public async  Task<JsonResult> findcustomerbyid(Dtos.Findcustomerbyiddto findcustomerbyiddto)
         {
             ServiceReference.CallContext callcontext = new ServiceReference.CallContext();
-            callcontext.Company = "";
+            callcontext.Company = "hfmp";
             callcontext.Language = "";
-            callcontext.LogonAsUser = "";
+            callcontext.LogonAsUser = "BankCollect2";
             callcontext.MessageId = "";
             callcontext.PartitionKey = "";
             // callcontext.PropertyBag.Keys
@@ -27,20 +28,21 @@ namespace relayAdapter.Controllers
             // return  Jnew [] { "Matthew", "Mark", "Luke", "John" };
             // return new JsonResult();
            // JsonSerializer();
-           ServiceReference.HFMP_AX_ECollectionClient client = new ServiceReference.HFMP_AX_ECollectionClient();
+           ServiceReference.HFMP_AX_ECollectionClient client = new ServiceReference.HFMP_AX_ECollectionClient(ServiceReference.HFMP_AX_ECollectionClient.EndpointConfiguration.NetTcpBinding_HFMP_AX_ECollection);
+           client.ClientCredentials.Windows.ClientCredential.UserName = "BankCollect2";
+           client.ClientCredentials.Windows.ClientCredential.Password = "Password@123";
+        
         //    try
         //    {
-               var  response  = await client.findCustomerByIdAsync(callcontext, findcustomerbyiddto._custAccount);
-               return response;
-            //    if(response.)
-           
-        //    }
-        //    catch (System.Exception ee)
-        //    {
-               
-        //        //throw Debug.WriteLine("WElo");
-        //    }
-           // return "";
+          if (client.InnerChannel.State != System.ServiceModel.CommunicationState.Faulted)
+            {
+               var res = await client.findCustomerByIdAsync(callcontext, findcustomerbyiddto._custAccount);
+                string jsonText = JsonConvert.SerializexmlNode(res);
+            }else{
+               return await client.findCustomerByIdAsync(callcontext, findcustomerbyiddto._custAccount);
+                
+            }
+          
 
         }
 

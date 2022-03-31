@@ -33,11 +33,25 @@ namespace relayAdapter.Controller
         {
             // return NotFound();
             ServiceReference.CallContext callcontext = new ServiceReference.CallContext();
+             callcontext.Company = "hfmp";
+            callcontext.Language = "";
+            callcontext.LogonAsUser = "BankCollect2";
+            callcontext.MessageId = "";
+            callcontext.PartitionKey = "";
             
 
             ServiceReference.HFMP_AX_ECollectionClient client = new ServiceReference.HFMP_AX_ECollectionClient();
-            return await client.createAndPostPaymentAsync(callcontext, createpaymentdto._custAccount, createpaymentdto._currencyCode, createpaymentdto._bankAccountId, createpaymentdto._amount, createpaymentdto._date);
-            // return "";
+            // client.Client
+            client.ClientCredentials.Windows.ClientCredential.UserName = "BankCollect2";
+           client.ClientCredentials.Windows.ClientCredential.Password = "Password@123";
+            if (client.InnerChannel.State != System.ServiceModel.CommunicationState.Faulted){
+                return await client.createAndPostPaymentAsync(callcontext, createpaymentdto._custAccount, createpaymentdto._currencyCode, createpaymentdto._bankAccountId, createpaymentdto._amount, createpaymentdto._date);
+           
+            }else{
+  return await client.createAndPostPaymentAsync(callcontext, createpaymentdto._custAccount, createpaymentdto._currencyCode, createpaymentdto._bankAccountId, createpaymentdto._amount, createpaymentdto._date);
+            
+            }
+          // return "";
             //Call Soap Reference Service here and return json packets
             // return createpaymentdto;
 

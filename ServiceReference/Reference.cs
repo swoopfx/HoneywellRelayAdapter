@@ -442,6 +442,14 @@ namespace ServiceReference
     public interface HFMP_AX_ECollection
     {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/HFMP_AX_ECollection/findCustomerById", ReplyAction="http://tempuri.org/HFMP_AX_ECollection/findCustomerByIdResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(ServiceReference.AifFault), Action="http://tempuri.org/HFMP_AX_ECollection/findCustomerByIdAifFaultFault", Name="AifFault", Namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault")]
+        System.Threading.Tasks.Task<ServiceReference.HFMP_AX_ECollectionFindCustomerByIdResponse> findCustomerByIdAsync(ServiceReference.HFMP_AX_ECollectionFindCustomerByIdRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/HFMP_AX_ECollection/postPayment", ReplyAction="http://tempuri.org/HFMP_AX_ECollection/postPaymentResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(ServiceReference.AifFault), Action="http://tempuri.org/HFMP_AX_ECollection/postPaymentAifFaultFault", Name="AifFault", Namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault")]
+        System.Threading.Tasks.Task<ServiceReference.HFMP_AX_ECollectionPostPaymentResponse> postPaymentAsync(ServiceReference.HFMP_AX_ECollectionPostPaymentRequest request);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/HFMP_AX_ECollection/createAndPostPayment", ReplyAction="http://tempuri.org/HFMP_AX_ECollection/createAndPostPaymentResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(ServiceReference.AifFault), Action="http://tempuri.org/HFMP_AX_ECollection/createAndPostPaymentAifFaultFault", Name="AifFault", Namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault")]
         System.Threading.Tasks.Task<ServiceReference.HFMP_AX_ECollectionCreateAndPostPaymentResponse> createAndPostPaymentAsync(ServiceReference.HFMP_AX_ECollectionCreateAndPostPaymentRequest request);
@@ -450,17 +458,97 @@ namespace ServiceReference
         [System.ServiceModel.FaultContractAttribute(typeof(ServiceReference.AifFault), Action="http://tempuri.org/HFMP_AX_ECollection/createPaymentAifFaultFault", Name="AifFault", Namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault")]
         System.Threading.Tasks.Task<ServiceReference.HFMP_AX_ECollectionCreatePaymentResponse> createPaymentAsync(ServiceReference.HFMP_AX_ECollectionCreatePaymentRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/HFMP_AX_ECollection/findCustomerById", ReplyAction="http://tempuri.org/HFMP_AX_ECollection/findCustomerByIdResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(ServiceReference.AifFault), Action="http://tempuri.org/HFMP_AX_ECollection/findCustomerByIdAifFaultFault", Name="AifFault", Namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault")]
-        System.Threading.Tasks.Task<ServiceReference.HFMP_AX_ECollectionFindCustomerByIdResponse> findCustomerByIdAsync(ServiceReference.HFMP_AX_ECollectionFindCustomerByIdRequest request);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/HFMP_AX_ECollection/findCustomerByName", ReplyAction="http://tempuri.org/HFMP_AX_ECollection/findCustomerByNameResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(ServiceReference.AifFault), Action="http://tempuri.org/HFMP_AX_ECollection/findCustomerByNameAifFaultFault", Name="AifFault", Namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault")]
         System.Threading.Tasks.Task<ServiceReference.HFMP_AX_ECollectionFindCustomerByNameResponse> findCustomerByNameAsync(ServiceReference.HFMP_AX_ECollectionFindCustomerByNameRequest request);
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="HFMP_AX_ECollectionFindCustomerByIdRequest", WrapperNamespace="http://tempuri.org", IsWrapped=true)]
+    public partial class HFMP_AX_ECollectionFindCustomerByIdRequest
+    {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/HFMP_AX_ECollection/postPayment", ReplyAction="http://tempuri.org/HFMP_AX_ECollection/postPaymentResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(ServiceReference.AifFault), Action="http://tempuri.org/HFMP_AX_ECollection/postPaymentAifFaultFault", Name="AifFault", Namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault")]
-        System.Threading.Tasks.Task<ServiceReference.HFMP_AX_ECollectionPostPaymentResponse> postPaymentAsync(ServiceReference.HFMP_AX_ECollectionPostPaymentRequest request);
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://schemas.microsoft.com/dynamics/2010/01/datacontracts")]
+        public ServiceReference.CallContext CallContext;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org", Order=0)]
+        public string accountNum;
+        
+        public HFMP_AX_ECollectionFindCustomerByIdRequest()
+        {
+        }
+        
+        public HFMP_AX_ECollectionFindCustomerByIdRequest(ServiceReference.CallContext CallContext, string accountNum)
+        {
+            this.CallContext = CallContext;
+            this.accountNum = accountNum;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="HFMP_AX_ECollectionFindCustomerByIdResponse", WrapperNamespace="http://tempuri.org", IsWrapped=true)]
+    public partial class HFMP_AX_ECollectionFindCustomerByIdResponse
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org", Order=0)]
+        public string response;
+        
+        public HFMP_AX_ECollectionFindCustomerByIdResponse()
+        {
+        }
+        
+        public HFMP_AX_ECollectionFindCustomerByIdResponse(string response)
+        {
+            this.response = response;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="HFMP_AX_ECollectionPostPaymentRequest", WrapperNamespace="http://tempuri.org", IsWrapped=true)]
+    public partial class HFMP_AX_ECollectionPostPaymentRequest
+    {
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://schemas.microsoft.com/dynamics/2010/01/datacontracts")]
+        public ServiceReference.CallContext CallContext;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org", Order=0)]
+        public string ledgerJournalId;
+        
+        public HFMP_AX_ECollectionPostPaymentRequest()
+        {
+        }
+        
+        public HFMP_AX_ECollectionPostPaymentRequest(ServiceReference.CallContext CallContext, string ledgerJournalId)
+        {
+            this.CallContext = CallContext;
+            this.ledgerJournalId = ledgerJournalId;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="HFMP_AX_ECollectionPostPaymentResponse", WrapperNamespace="http://tempuri.org", IsWrapped=true)]
+    public partial class HFMP_AX_ECollectionPostPaymentResponse
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org", Order=0)]
+        public string response;
+        
+        public HFMP_AX_ECollectionPostPaymentResponse()
+        {
+        }
+        
+        public HFMP_AX_ECollectionPostPaymentResponse(string response)
+        {
+            this.response = response;
+        }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -586,50 +674,6 @@ namespace ServiceReference
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="HFMP_AX_ECollectionFindCustomerByIdRequest", WrapperNamespace="http://tempuri.org", IsWrapped=true)]
-    public partial class HFMP_AX_ECollectionFindCustomerByIdRequest
-    {
-        
-        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://schemas.microsoft.com/dynamics/2010/01/datacontracts")]
-        public ServiceReference.CallContext CallContext;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org", Order=0)]
-        public string accountNum;
-        
-        public HFMP_AX_ECollectionFindCustomerByIdRequest()
-        {
-        }
-        
-        public HFMP_AX_ECollectionFindCustomerByIdRequest(ServiceReference.CallContext CallContext, string accountNum)
-        {
-            this.CallContext = CallContext;
-            this.accountNum = accountNum;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="HFMP_AX_ECollectionFindCustomerByIdResponse", WrapperNamespace="http://tempuri.org", IsWrapped=true)]
-    public partial class HFMP_AX_ECollectionFindCustomerByIdResponse
-    {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org", Order=0)]
-        public string response;
-        
-        public HFMP_AX_ECollectionFindCustomerByIdResponse()
-        {
-        }
-        
-        public HFMP_AX_ECollectionFindCustomerByIdResponse(string response)
-        {
-            this.response = response;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="HFMP_AX_ECollectionFindCustomerByNameRequest", WrapperNamespace="http://tempuri.org", IsWrapped=true)]
     public partial class HFMP_AX_ECollectionFindCustomerByNameRequest
     {
@@ -666,50 +710,6 @@ namespace ServiceReference
         }
         
         public HFMP_AX_ECollectionFindCustomerByNameResponse(string response)
-        {
-            this.response = response;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="HFMP_AX_ECollectionPostPaymentRequest", WrapperNamespace="http://tempuri.org", IsWrapped=true)]
-    public partial class HFMP_AX_ECollectionPostPaymentRequest
-    {
-        
-        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://schemas.microsoft.com/dynamics/2010/01/datacontracts")]
-        public ServiceReference.CallContext CallContext;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org", Order=0)]
-        public string ledgerJournalId;
-        
-        public HFMP_AX_ECollectionPostPaymentRequest()
-        {
-        }
-        
-        public HFMP_AX_ECollectionPostPaymentRequest(ServiceReference.CallContext CallContext, string ledgerJournalId)
-        {
-            this.CallContext = CallContext;
-            this.ledgerJournalId = ledgerJournalId;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="HFMP_AX_ECollectionPostPaymentResponse", WrapperNamespace="http://tempuri.org", IsWrapped=true)]
-    public partial class HFMP_AX_ECollectionPostPaymentResponse
-    {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org", Order=0)]
-        public string response;
-        
-        public HFMP_AX_ECollectionPostPaymentResponse()
-        {
-        }
-        
-        public HFMP_AX_ECollectionPostPaymentResponse(string response)
         {
             this.response = response;
         }
@@ -766,6 +766,34 @@ namespace ServiceReference
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<ServiceReference.HFMP_AX_ECollectionFindCustomerByIdResponse> ServiceReference.HFMP_AX_ECollection.findCustomerByIdAsync(ServiceReference.HFMP_AX_ECollectionFindCustomerByIdRequest request)
+        {
+            return base.Channel.findCustomerByIdAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<ServiceReference.HFMP_AX_ECollectionFindCustomerByIdResponse> findCustomerByIdAsync(ServiceReference.CallContext CallContext, string accountNum)
+        {
+            ServiceReference.HFMP_AX_ECollectionFindCustomerByIdRequest inValue = new ServiceReference.HFMP_AX_ECollectionFindCustomerByIdRequest();
+            inValue.CallContext = CallContext;
+            inValue.accountNum = accountNum;
+            return ((ServiceReference.HFMP_AX_ECollection)(this)).findCustomerByIdAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<ServiceReference.HFMP_AX_ECollectionPostPaymentResponse> ServiceReference.HFMP_AX_ECollection.postPaymentAsync(ServiceReference.HFMP_AX_ECollectionPostPaymentRequest request)
+        {
+            return base.Channel.postPaymentAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<ServiceReference.HFMP_AX_ECollectionPostPaymentResponse> postPaymentAsync(ServiceReference.CallContext CallContext, string ledgerJournalId)
+        {
+            ServiceReference.HFMP_AX_ECollectionPostPaymentRequest inValue = new ServiceReference.HFMP_AX_ECollectionPostPaymentRequest();
+            inValue.CallContext = CallContext;
+            inValue.ledgerJournalId = ledgerJournalId;
+            return ((ServiceReference.HFMP_AX_ECollection)(this)).postPaymentAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         System.Threading.Tasks.Task<ServiceReference.HFMP_AX_ECollectionCreateAndPostPaymentResponse> ServiceReference.HFMP_AX_ECollection.createAndPostPaymentAsync(ServiceReference.HFMP_AX_ECollectionCreateAndPostPaymentRequest request)
         {
             return base.Channel.createAndPostPaymentAsync(request);
@@ -802,20 +830,6 @@ namespace ServiceReference
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<ServiceReference.HFMP_AX_ECollectionFindCustomerByIdResponse> ServiceReference.HFMP_AX_ECollection.findCustomerByIdAsync(ServiceReference.HFMP_AX_ECollectionFindCustomerByIdRequest request)
-        {
-            return base.Channel.findCustomerByIdAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<ServiceReference.HFMP_AX_ECollectionFindCustomerByIdResponse> findCustomerByIdAsync(ServiceReference.CallContext CallContext, string accountNum)
-        {
-            ServiceReference.HFMP_AX_ECollectionFindCustomerByIdRequest inValue = new ServiceReference.HFMP_AX_ECollectionFindCustomerByIdRequest();
-            inValue.CallContext = CallContext;
-            inValue.accountNum = accountNum;
-            return ((ServiceReference.HFMP_AX_ECollection)(this)).findCustomerByIdAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         System.Threading.Tasks.Task<ServiceReference.HFMP_AX_ECollectionFindCustomerByNameResponse> ServiceReference.HFMP_AX_ECollection.findCustomerByNameAsync(ServiceReference.HFMP_AX_ECollectionFindCustomerByNameRequest request)
         {
             return base.Channel.findCustomerByNameAsync(request);
@@ -827,20 +841,6 @@ namespace ServiceReference
             inValue.CallContext = CallContext;
             inValue.name = name;
             return ((ServiceReference.HFMP_AX_ECollection)(this)).findCustomerByNameAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<ServiceReference.HFMP_AX_ECollectionPostPaymentResponse> ServiceReference.HFMP_AX_ECollection.postPaymentAsync(ServiceReference.HFMP_AX_ECollectionPostPaymentRequest request)
-        {
-            return base.Channel.postPaymentAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<ServiceReference.HFMP_AX_ECollectionPostPaymentResponse> postPaymentAsync(ServiceReference.CallContext CallContext, string ledgerJournalId)
-        {
-            ServiceReference.HFMP_AX_ECollectionPostPaymentRequest inValue = new ServiceReference.HFMP_AX_ECollectionPostPaymentRequest();
-            inValue.CallContext = CallContext;
-            inValue.ledgerJournalId = ledgerJournalId;
-            return ((ServiceReference.HFMP_AX_ECollection)(this)).postPaymentAsync(inValue);
         }
         
         public virtual System.Threading.Tasks.Task OpenAsync()
@@ -870,7 +870,7 @@ namespace ServiceReference
         {
             if ((endpointConfiguration == EndpointConfiguration.NetTcpBinding_HFMP_AX_ECollection))
             {
-                return new System.ServiceModel.EndpointAddress("net.tcp://hfmp79:8201/DynamicsAx/Services/HFMP_AX_Services");
+                return new System.ServiceModel.EndpointAddress("net.tcp://hfmp201:8201/DynamicsAx/Services/HFMP_AX_Services");
             }
             throw new System.InvalidOperationException(string.Format("Could not find endpoint with name \'{0}\'.", endpointConfiguration));
         }
