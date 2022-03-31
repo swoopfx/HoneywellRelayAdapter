@@ -15,7 +15,7 @@ namespace relayAdapter.Controllers
     {
 
         [HttpPost]
-        public async  Task<string> findcustomerbyid(Dtos.Findcustomerbyiddto findcustomerbyiddto)
+        public async  Task<ServiceReference.HFMP_AX_ECollectionFindCustomerByIdResponse> findcustomerbyid(Dtos.Findcustomerbyiddto findcustomerbyiddto)
         {
             ServiceReference.CallContext callcontext = new ServiceReference.CallContext();
             callcontext.Company = "hfmp";
@@ -36,13 +36,15 @@ namespace relayAdapter.Controllers
         //    {
           if (client.InnerChannel.State != System.ServiceModel.CommunicationState.Faulted)
             {
-            var ff =  await client.findCustomerByIdAsync(callcontext, findcustomerbyiddto._custAccount);
-              return ff.string()
+            var res =   await client.findCustomerByIdAsync(callcontext, findcustomerbyiddto._custAccount);
+            return res;
+            //   return ff.string()
                 // string jsonText = JsonConvert.SerializeXmlNode(res);
                 // return jsonText;
             }else{
-                  var ff = await client.findCustomerByIdAsync(callcontext, findcustomerbyiddto._custAccount);
-                return ff.ToString();
+                 var res =  await client.findCustomerByIdAsync(callcontext, findcustomerbyiddto._custAccount);
+                return res;
+                // return ff.ToString();
                 // string jsonText = JsonConvert.SerializeXmlNode(res);
                 // return jsonText;
             }

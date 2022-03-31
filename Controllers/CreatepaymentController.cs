@@ -45,7 +45,7 @@ namespace relayAdapter.Controller
             client.ClientCredentials.Windows.ClientCredential.UserName = "BankCollect2";
            client.ClientCredentials.Windows.ClientCredential.Password = "Password@123";
             if (client.InnerChannel.State != System.ServiceModel.CommunicationState.Faulted){
-                return await client.createAndPostPaymentAsync(callcontext, createpaymentdto._custAccount, createpaymentdto._currencyCode, createpaymentdto._bankAccountId, createpaymentdto._amount, createpaymentdto._date);
+               return await client.createAndPostPaymentAsync(callcontext, createpaymentdto._custAccount, createpaymentdto._currencyCode, createpaymentdto._bankAccountId, createpaymentdto._amount, createpaymentdto._date);
            
             }else{
   return await client.createAndPostPaymentAsync(callcontext, createpaymentdto._custAccount, createpaymentdto._currencyCode, createpaymentdto._bankAccountId, createpaymentdto._amount, createpaymentdto._date);
